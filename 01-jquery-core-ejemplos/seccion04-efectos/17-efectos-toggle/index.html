@@ -1,6 +1,6 @@
-<!--  **************************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion03-eventos/14-eventos-focus-blur/index.html  **********  -->
-<!--  **************************************************************************************************************************************  -->
+<!--  **********************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion04-efectos/17-efectos-toggle/index.html  **********  -->
+<!--  **********************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> jQuery Eventos Focus y Blur - Todo jQuery de Novato a Experto - Udemy - Francisco Javier Arce Anguiano
+    <title> jQuery Efectos Toggle - Todo jQuery de Novato a Experto - Udemy - Francisco Javier Arce Anguiano
     </title>
 
     <!--  **********  Favicon  **********  -->
@@ -50,7 +50,12 @@
             background-size: 100%;
         }
 
-        #button {
+        .botones {
+            display: flex;
+            gap: 20px;
+        }
+
+        input {
             width: 100px;
             margin: 0 auto;
             background-color: blueviolet;
@@ -59,7 +64,6 @@
             border-radius: 10px;
             cursor: pointer;
         }
-        
     </style>
 
 
@@ -72,16 +76,11 @@
             console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
             console.log("\n");
 
-            $("input").focus(function () {
-                $(this).css("background", "yellow");
-            });
+            //  -----  Referencia al HTML  -----
+            const $afrodita = $("#afrodita");
 
-            $("input").blur(function () {
-                $(this).css("background", "green");
-            });
-
-            $("input").click("submit", function(e) {
-                e.preventDefault();
+            $("#mostrar").click(function () {
+                $afrodita.toggle(3000);
             });
 
         });
@@ -96,33 +95,18 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 03 - Eventos Focus y Blur. </h1>
+        <h1> Seccion 04 - Efectos Toggle. </h1>
         <hr>
     </header>
 
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <form name="form1" method="post" action="">
-            <table width="600" border="0">
-                <tr>
-                    <td width="122">Nombre:</td>
-                    <td width="468"><input type="text" name="nombre" id="nombre"></td>
-                </tr>
-                <tr>
-                    <td>Apellidos</td>
-                    <td><input type="text" name="apellidos" id="apellidos"></td>
-                </tr>
-                <tr>
-                    <td>Email:</td>
-                    <td><input type="text" name="email" id="email"></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td><input type="submit" name="button" id="button" value="Submit"></td>
-                </tr>
-            </table>
-        </form>
+        <div class="botones">
+            <input type="button" id="mostrar" value="toggle" />
+        </div>
+
+        <div id="afrodita"> </div>
 
     </main>
 

@@ -1,6 +1,6 @@
-<!--  **************************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion03-eventos/14-eventos-focus-blur/index.html  **********  -->
-<!--  **************************************************************************************************************************************  -->
+<!--  ************************************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion04-efectos/19-efectos-slide-down-up-toggle/index.html  **********  -->
+<!--  ************************************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -8,7 +8,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title> jQuery Eventos Focus y Blur - Todo jQuery de Novato a Experto - Udemy - Francisco Javier Arce Anguiano
+    <title> jQuery Efectos SlideDown, SlideUp y SlideToggle - Todo jQuery de Novato a Experto - Udemy - Francisco
+        Javier Arce Anguiano
     </title>
 
     <!--  **********  Favicon  **********  -->
@@ -42,16 +43,30 @@
             font-size: 16px;
         }
 
+        #encabezado {
+            width: 800px;
+            text-align: center;
+            background-color: #e5eecc;
+            border: solid 1px #c3c3c3;
+            cursor: pointer;
+        }
+
         #afrodita {
             width: 800px;
             height: 502px;
-            background-image: url(imagenes/afrodita.jpg);
+            background-image: url(imagenes/afrodita2.jpg);
             background-repeat: no-repeat;
             background-size: 100%;
+            display: none;
         }
 
-        #button {
-            width: 100px;
+        .botones {
+            display: flex;
+            gap: 20px;
+        }
+
+        input {
+            width: 180px;
             margin: 0 auto;
             background-color: blueviolet;
             color: white;
@@ -59,7 +74,6 @@
             border-radius: 10px;
             cursor: pointer;
         }
-        
     </style>
 
 
@@ -72,16 +86,20 @@
             console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
             console.log("\n");
 
-            $("input").focus(function () {
-                $(this).css("background", "yellow");
+            //  -----  Referencia al HTML  -----
+            const $encabezado = $("#encabezado");
+            const $afrodita = $("#afrodita");
+
+            $encabezado.click(function () {
+                $afrodita.slideDown("slow");
             });
 
-            $("input").blur(function () {
-                $(this).css("background", "green");
+            $encabezado.dblclick(function () {
+                $afrodita.slideUp("slow");
             });
 
-            $("input").click("submit", function(e) {
-                e.preventDefault();
+            $("#toggle").click(function() {
+                $afrodita.slideToggle(3000);
             });
 
         });
@@ -96,33 +114,16 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 03 - Eventos Focus y Blur. </h1>
+        <h1> Seccion 04 - Efectos SlideDown, SlideUp y SlideToggle. </h1>
         <hr>
     </header>
 
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <form name="form1" method="post" action="">
-            <table width="600" border="0">
-                <tr>
-                    <td width="122">Nombre:</td>
-                    <td width="468"><input type="text" name="nombre" id="nombre"></td>
-                </tr>
-                <tr>
-                    <td>Apellidos</td>
-                    <td><input type="text" name="apellidos" id="apellidos"></td>
-                </tr>
-                <tr>
-                    <td>Email:</td>
-                    <td><input type="text" name="email" id="email"></td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td><input type="submit" name="button" id="button" value="Submit"></td>
-                </tr>
-            </table>
-        </form>
+        <input type="button" id="toggle" value="slide toggle">
+        <div id="encabezado">La Venus del espejo, por Velazquez (1599-1660)</div>
+        <div id="afrodita"></div>
 
     </main>
 
