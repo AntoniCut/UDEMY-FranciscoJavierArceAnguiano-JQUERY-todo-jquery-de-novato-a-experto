@@ -1,6 +1,6 @@
-<!--  **************************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion06-dom-añadir-eliminar-elementos/index.html  **********  -->
-<!--  **************************************************************************************************************************************  -->
+<!--  **********************************************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion06-dom-añadir-eliminar-elementos/35-dom-after-before/index.html  **********  -->
+<!--  **********************************************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -8,14 +8,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Seccion 6 - DOM, Añadir y Remover Elementos - Todo jQuery de Novato a Experto - Udemy - Francisco
-        Javier Arce Anguiano
-    </title>
+    <title>Seccion 6 - DOM, Añadir y Remover Elementos</title>
 
     <!--  **********  Favicon  **********  -->
-    <link rel="icon" href="img/icon-jquery.png">
+    <link rel="icon" href="img/jquery-icon.png">
 
-    <!-- **********  Librería de jQuery - CDN de Google  **********   -->
+    <!--  **********  Librería de jQuery - CDN de Google  **********  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"> </script>
 
 
@@ -39,7 +37,7 @@
             align-items: center;
             text-align: left;
             margin-top: 20px;
-            gap: 10px;
+            gap: 20px;
             font-size: 16px;
         }
 
@@ -51,15 +49,16 @@
             background-size: 100%;
         }
 
-        p {
-            font-size: 24px;
-            text-align: center;
-        }
-
         .botones {
             display: flex;
+            flex-direction: row;
             justify-content: center;
             gap: 20px;
+        }
+
+        .texto-lista {
+            display: flex;
+            flex-direction: row;
         }
 
         .input {
@@ -79,29 +78,40 @@
     </style>
 
 
-    <!-- **********  Código jQuery  --  Script Interno  **********   -->
+    <!--  **********  Código jQuery  **********  -->
     <script>
 
-        //  -----  Método READY  -----
         $(document).ready(function () {
 
             console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
-            console.log("\n");
 
-            $("select").change(muestra);
-            muestra();
+            //  -----  Referencias al HTML  -----
+            var $btnRespuesta = $("#respuesta");
+            var $pPregunta = $("#pregunta");
 
+            //  -----  Función de clic en el botón de respuesta  -----
+            $btnRespuesta.click(function () {
 
-            function muestra() {
-                
-                //  -----  Seleccionamos solo un valor  -----
-                const unValor = $("#estado").val();
+                //  -----  Añadimos un párrafo después del párrafo pregunta  -----
+                $pPregunta.after("<p id='res'>Sandro Bottichelli</p>");
 
-                //  -----  Arreglo si es mas de un Valor  -----
-                const muchosValores = $("#idiomas").val() || [];
-                $("p:first").text("Estado Civil: " + unValor);
-                $("p:last").text("Idiomas: " + muchosValores.join(", "));
-            }
+                //  -----  Ocultamos el botón "Respuesta"  -----
+                $(this).hide();
+
+                //  -----  Añadimos un nuevo botón antes del párrafo res  -----
+                $btnRespuesta.before("<button id='pintura'> Mostrar Pintura </button>");
+
+                //  -----  Añadimos funcionalidad al nuevo botón "Mostrar Pintura"  -----
+                $("#pintura").click(function () {
+
+                    //  -----  Añadimos una imagen después del párrafo respuesta  -----
+                    $("#res").after("<img src='imagenes/afrodita.jpg'>");
+
+                    //  -----  Ocultamos el boton Mostrar Pintura  -----
+                    $(this).hide();
+                });
+
+            });
 
         });
 
@@ -109,39 +119,19 @@
 
 </head>
 
-
 <body>
 
-    <!--  **********  Header o Cabecera  **********  -->
+    <!--  Header o Cabecera  -->
     <header class="header">
-
-        <h1> Seccion 6 - Añadir Texto por medio del Método append(). </h1>
+        <h1>Seccion 6 - Añadir Elementos con after() y before()</h1>
         <hr>
     </header>
 
-    <!--  **********  Contenido  **********  -->
+    <!--  Contenido  -->
     <main class="main">
 
-        <p> </p>
-        <p> </p>
-
-        <br> <br>
-
-        <select id="idiomas" multiple="multiple">
-            <option>Epañol</option>
-            <option>Inglés</option>
-            <option>Francés</option>
-            <option>Alemán</option>
-        </select>
-
-        <select id="estado">
-            <option>Soltero</option>
-            <option>Casado</option>
-            <option>Divorciado</option>
-            <option>Viudo</option>
-        </select>
-
-
+        <button type="button" value="Respuesta" id="respuesta"> Respuesta </button>
+        <p id="pregunta">¿Quién pintó el Nacimiento de Venus en 1484?</p>
 
     </main>
 

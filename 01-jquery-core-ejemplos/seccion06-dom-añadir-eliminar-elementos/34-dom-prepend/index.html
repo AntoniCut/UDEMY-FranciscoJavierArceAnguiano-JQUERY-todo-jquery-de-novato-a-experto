@@ -1,6 +1,6 @@
-<!--  **************************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion06-dom-añadir-eliminar-elementos/index.html  **********  -->
-<!--  **************************************************************************************************************************************  -->
+<!--  *****************************************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion06-dom-añadir-eliminar-elementos/34-dom-prepend/index.html  **********  -->
+<!--  *****************************************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -13,7 +13,7 @@
     </title>
 
     <!--  **********  Favicon  **********  -->
-    <link rel="icon" href="img/icon-jquery.png">
+    <link rel="icon" href="img/jquery-icon.png">
 
     <!-- **********  Librería de jQuery - CDN de Google  **********   -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"> </script>
@@ -39,7 +39,7 @@
             align-items: center;
             text-align: left;
             margin-top: 20px;
-            gap: 10px;
+            gap: 40px;
             font-size: 16px;
         }
 
@@ -51,15 +51,21 @@
             background-size: 100%;
         }
 
-        p {
+        /* p {
             font-size: 24px;
             text-align: center;
-        }
+        } */
 
         .botones {
             display: flex;
+            flex-direction: row;
             justify-content: center;
             gap: 20px;
+        }
+
+        .texto-lista {
+            display: flex;
+            flex-direction: row;
         }
 
         .input {
@@ -67,7 +73,7 @@
             height: 20px;
         }
 
-        button {
+        input {
             width: 180px;
             margin: 0 auto;
             background-color: blueviolet;
@@ -88,20 +94,32 @@
             console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
             console.log("\n");
 
-            $("select").change(muestra);
-            muestra();
+            const poema = [];
+            poema.push("En el agua clara");
+            poema.push("que brota en la fuente");
+            poema.push("un lindo pescado");
+            poema.push("sale de repente");
+            poema.push("Lindo pescadito");
+            poema.push("no quieres salir");
+            poema.push("a jugar con mi aro");
+            poema.push("vamos al jardín.");
 
+            let index1 = poema.length - 1;
+            let index2 = poema.length - 1;
 
-            function muestra() {
-                
-                //  -----  Seleccionamos solo un valor  -----
-                const unValor = $("#estado").val();
+            $("#boton1").click(function () {
+                if (index1 >=0) {
+                    $("p").prepend(poema[index1] + "<br>");
+                    index1--;
+                }
+            });
 
-                //  -----  Arreglo si es mas de un Valor  -----
-                const muchosValores = $("#idiomas").val() || [];
-                $("p:first").text("Estado Civil: " + unValor);
-                $("p:last").text("Idiomas: " + muchosValores.join(", "));
-            }
+            $("#boton2").click(function () {
+                if (index2 >= 0) {
+                    $("ul").prepend("<li>" + poema[index2] + "</li>");
+                    index2--;
+                }
+            });
 
         });
 
@@ -115,34 +133,23 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 6 - Añadir Texto por medio del Método append(). </h1>
+        <h1> Seccion 6 - Añadir Texto por medio del Método prepend(). </h1>
         <hr>
     </header>
 
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <p> </p>
-        <p> </p>
-
-        <br> <br>
-
-        <select id="idiomas" multiple="multiple">
-            <option>Epañol</option>
-            <option>Inglés</option>
-            <option>Francés</option>
-            <option>Alemán</option>
-        </select>
-
-        <select id="estado">
-            <option>Soltero</option>
-            <option>Casado</option>
-            <option>Divorciado</option>
-            <option>Viudo</option>
-        </select>
-
-
-
+        <div class="botones">
+            <input type="button" value="Añadir texto" id="boton1" /> <br>
+            <input type="button" value="Añadir lista" id="boton2" /> <br>
+        </div>
+        
+        <div class="texto-lista">
+            <p> </p>    
+            <ul> </ul>
+        </div>
+                
     </main>
 
 </body>

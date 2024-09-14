@@ -1,6 +1,6 @@
-<!--  **************************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion06-dom-añadir-eliminar-elementos/index.html  **********  -->
-<!--  **************************************************************************************************************************************  -->
+<!--  ******************************************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion06-dom-añadir-eliminar-elementos/37-dom-addclass/index.html  **********  -->
+<!--  ******************************************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -8,14 +8,12 @@
 
 <head>
     <meta charset="utf-8">
-    <title> Seccion 6 - DOM, Añadir y Remover Elementos - Todo jQuery de Novato a Experto - Udemy - Francisco
-        Javier Arce Anguiano
-    </title>
+    <title>Seccion 6 - DOM, Añadir y Remover Elementos</title>
 
     <!--  **********  Favicon  **********  -->
-    <link rel="icon" href="img/icon-jquery.png">
+    <link rel="icon" href="img/jquery-icon.png">
 
-    <!-- **********  Librería de jQuery - CDN de Google  **********   -->
+    <!--  **********  Librería de jQuery - CDN de Google  **********  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"> </script>
 
 
@@ -39,35 +37,25 @@
             align-items: center;
             text-align: left;
             margin-top: 20px;
-            gap: 10px;
+            gap: 20px;
             font-size: 16px;
         }
 
-        #afrodita {
-            width: 800px;
-            height: 502px;
-            background-image: url(imagenes/afrodita.jpg);
-            background-repeat: no-repeat;
-            background-size: 100%;
-        }
-
-        p {
-            font-size: 24px;
-            text-align: center;
-        }
 
         .botones {
             display: flex;
+            flex-direction: row;
             justify-content: center;
             gap: 20px;
         }
+
 
         .input {
             width: 200px;
             height: 20px;
         }
 
-        button {
+        input {
             width: 180px;
             margin: 0 auto;
             background-color: blueviolet;
@@ -76,32 +64,48 @@
             border-radius: 10px;
             cursor: pointer;
         }
+
+        .autor {
+            text-align: right;
+            font-style: italic;
+        }
+
+        .texto {
+            text-align: center;
+            color: red;
+        }
+
+        .caja {
+            width: 400px;
+            background-color: #ff9;
+            border: black solid 2px;
+            padding: 20px;
+            height: 200px;
+        }
     </style>
 
 
-    <!-- **********  Código jQuery  --  Script Interno  **********   -->
+    <!--  **********  Código jQuery  **********  -->
     <script>
 
-        //  -----  Método READY  -----
         $(document).ready(function () {
 
             console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
-            console.log("\n");
 
-            $("select").change(muestra);
-            muestra();
+            $("#cajaBtn").click(function () {
+                $("div").addClass('caja');
+                $(this).hide();
+            });
 
+            $("#textoBtn").click(function () {
+                $("p").addClass('texto');
+                $(this).hide();
+            });
 
-            function muestra() {
-                
-                //  -----  Seleccionamos solo un valor  -----
-                const unValor = $("#estado").val();
-
-                //  -----  Arreglo si es mas de un Valor  -----
-                const muchosValores = $("#idiomas").val() || [];
-                $("p:first").text("Estado Civil: " + unValor);
-                $("p:last").text("Idiomas: " + muchosValores.join(", "));
-            }
+            $("#autorBtn").click(function () {
+                $("#autor").addClass('autor');
+                $(this).hide();
+            });
 
         });
 
@@ -109,39 +113,29 @@
 
 </head>
 
-
 <body>
 
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 6 - Añadir Texto por medio del Método append(). </h1>
+        <h1> Seccion 6 - Manipular los estilos en cascada con addClass(). </h1>
         <hr>
+
     </header>
 
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <p> </p>
-        <p> </p>
-
-        <br> <br>
-
-        <select id="idiomas" multiple="multiple">
-            <option>Epañol</option>
-            <option>Inglés</option>
-            <option>Francés</option>
-            <option>Alemán</option>
-        </select>
-
-        <select id="estado">
-            <option>Soltero</option>
-            <option>Casado</option>
-            <option>Divorciado</option>
-            <option>Viudo</option>
-        </select>
-
-
+        <div>
+            <p>En el agua clara</p>
+            <p>Que brota en la fuente</p>
+            <p>Un lindo pescado</p>
+            <p>Sale de repente</p>
+            <p id="autor">Autor: anónimo</p>
+        </div>
+        <input type="button" value="Estilo Caja" id="cajaBtn">
+        <input type="button" value="Estilo Texto" id="textoBtn">
+        <input type="button" value="Estilo Autor" id="autorBtn">
 
     </main>
 
