@@ -1,6 +1,6 @@
-<!--  ********************************************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion07-modificar-dimensiones-con-jquery/39-dimensiones/index.html  **********  -->
-<!--  ********************************************************************************************************************************************************  -->
+<!--  *********************************************************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion07-modificar-dimensiones-con-jquery/40-dimensiones-width-height/index.html  **********  -->
+<!--  *********************************************************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -55,7 +55,7 @@
             height: 20px;
         }
 
-        button {
+        input {
             width: 180px;
             margin: 0 auto;
             background-color: blueviolet;
@@ -83,32 +83,36 @@
 
             console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
 
-            $("#dim").click(function () {
-                var txt = "";
-                txt += "Ancho: " + $("#div1").width() + "<br>";
-                txt += "Alto : " + $("#div1").height();
-                $("#div1").html(txt);
+            $imgAfro = $("#afro");
+            
+            $width = $imgAfro.width();
+            $height = $imgAfro.height();
+            
+            console.log($width, $height);
+
+
+            $("#chica").click(function() {
+                $("#afro")
+                    .width(400)
+                    .height(251)
             });
 
-            $("#int").click(function () {
-                var txt = "";
-                txt += "Ancho + padding: " + $("#div1").innerWidth() + "<br>";
-                txt += "Alto + padding : " + $("#div1").innerHeight();
-                $("#div1").html(txt);
+            $("#mediana").click(function() {
+                $("#afro")
+                    .width(800)
+                    .height(502)
             });
 
-            $("#ext").click(function () {
-                var txt = "";
-                txt += "Ancho + padding + borde: " + $("#div1").outerWidth() + "<br>";
-                txt += "Alto + padding + borde : " + $("#div1").outerHeight();
-                $("#div1").html(txt);
+            $("#grande").click(function() {
+                $("#afro")
+                    .width(1200)
+                    .height(754)
             });
-
-            $("#tot").click(function () {
-                var txt = "";
-                txt += "Ancho + padding + borde + márgen: " + $("#div1").outerWidth(true) + "<br>";
-                txt += "Alto + padding + borde + márgen : " + $("#div1").outerHeight(true);
-                $("#div1").html(txt);
+            
+            $("#original").click(function() {
+                $("#afro")
+                    .width($width)
+                    .height($height)
             });
 
         });
@@ -122,7 +126,7 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 7 - Metodos para Manejar las Dimensiones del Modelo de Caja. </h1>
+        <h1> Seccion 7 - Modificar las Dimensiones por medio de width() y height(). </h1>
         <hr>
 
     </header>
@@ -130,23 +134,13 @@
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <div id="div1"> </div>
-
-        <div class="botones">
-            <button id="dim">Dimensiones</button>
-            <button id="int">Dimensiones internas</button>
-            <button id="ext">Dimensiones externas</button>
-            <button id="tot">Dimensiones total</button>
-        </div>
-
-        <code>
-            height: 100px; <br>
-            width: 300px; <br><br>
-            padding: 10px; <br>
-            margin: 10px; <br><br>
-            border: 5px solid blue; <br>
-            background-color: lightblue;
-        </code>
+        <input type="button" id="chica" value="Chica">
+        <input type="button" id="mediana" value="Mediana">
+        <input type="button" id="grande" value="Grande">
+        <input type="button" id="original" value="Original">
+        <br>
+        <img id="afro" src="imagenes/afrodita.jpg" />
+        <p></p>
 
     </main>
 
