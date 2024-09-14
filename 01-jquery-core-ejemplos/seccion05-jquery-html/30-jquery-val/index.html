@@ -1,6 +1,6 @@
-<!--  *****************************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion04-efectos/26-efectos-animate-chain/index.html  **********  -->
-<!--  *****************************************************************************************************************************************  -->
+<!--  **********************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion05-jquery-html/30-jquery-val/index.html  **********  -->
+<!--  **********************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> jQuery Efectos Animate Chain - Todo jQuery de Novato a Experto - Udemy - Francisco
+    <title> Seccion 5 - jQuery y HTML  - Todo jQuery de Novato a Experto - Udemy - Francisco
         Javier Arce Anguiano
     </title>
 
@@ -52,7 +52,7 @@
         }
 
         p {
-            background-color: #CCC;
+            font-size: 24px;
             text-align: center;
         }
 
@@ -62,7 +62,12 @@
             gap: 20px;
         }
 
-        input {
+        .input {
+            width: 200px;
+            height: 20px;
+        }
+        
+        button {
             width: 180px;
             margin: 0 auto;
             background-color: blueviolet;
@@ -70,7 +75,7 @@
             padding: 7px;
             border-radius: 10px;
             cursor: pointer;
-        }
+        } 
     </style>
 
 
@@ -83,28 +88,17 @@
             console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
             console.log("\n");
 
-            //  -----  Referencia al HTML  -----
-            const $cuadrado = $("#cuadrado");
+            $("button").click( function() {
+                const textoInput = $("input").val();
+                $(".valorInputBoton").text(textoInput);
+            })
 
-
-            $("#anima").click(function () {
-
-                $("p")
-                    .css("color", "red")
-                    .slideUp("slow")
-                    .slideDown("fast", function() {
-                        $(this).css("color", "black");
-                    })
-            });
-
-
-            $("#cuadro").click(function () {
-
-                $("#afrodita")
-                    .slideUp("slow")
-                    .slideDown("fast")
-            });
-
+            $("input").keyup( function() {
+                let textoInput = $("input").val();
+                textoInput =  textoInput.toUpperCase();
+                $(".valorInputTexto").text(textoInput);
+            }).keyup();
+       
         });
 
     </script>
@@ -117,22 +111,22 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 04 - Efectos Animate Chain. </h1>
+        <h1> Seccion 5 - Leer el Valor de un Campo de Texto con val(). </h1>
         <hr>
     </header>
 
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <p> Nacimiento de Afrodita, por Sandro Botticelli (1445-1510) </p>
-        <p> Autor italiano del renacimiento </p>
+        <input type="text" class="input" value="Hola...">
+        
+        <button> Valor Input </button>
 
-        <div id="afrodita"> </div>
-
-        <div class="botones">
-            <input type="button" id="anima" value="Anima titulo" />
-            <input type="button" id="cuadro" value="Anima cuadro" />
-        </div>
+        <br> <br> <br>
+        
+        Valor del input al pulsar botón <p class="valorInputBoton"> </p>
+        <br>
+        valor del input en Mayusculas al escribir en el Input <p class="valorInputTexto"> </p>
 
     </main>
 

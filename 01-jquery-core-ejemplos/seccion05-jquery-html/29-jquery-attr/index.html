@@ -1,6 +1,6 @@
-<!--  *****************************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion04-efectos/26-efectos-animate-chain/index.html  **********  -->
-<!--  *****************************************************************************************************************************************  -->
+<!--  ***********************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion05-jquery-html/29-jquery-attr/index.html  **********  -->
+<!--  ***********************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> jQuery Efectos Animate Chain - Todo jQuery de Novato a Experto - Udemy - Francisco
+    <title> Seccion 5 - jQuery y HTML - Todo jQuery de Novato a Experto - Udemy - Francisco
         Javier Arce Anguiano
     </title>
 
@@ -52,7 +52,6 @@
         }
 
         p {
-            background-color: #CCC;
             text-align: center;
         }
 
@@ -83,28 +82,35 @@
             console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
             console.log("\n");
 
-            //  -----  Referencia al HTML  -----
-            const $cuadrado = $("#cuadrado");
+            //  -----  Referencias al HTML  -----
+            const $texto = $("#texto");
 
-
-            $("#anima").click(function () {
-
-                $("p")
-                    .css("color", "red")
-                    .slideUp("slow")
-                    .slideDown("fast", function() {
-                        $(this).css("color", "black");
-                    })
+            $("#titulo").click( function() {
+                const titulo = $("img").attr("title");
+                $texto.text(titulo);
             });
 
-
-            $("#cuadro").click(function () {
-
-                $("#afrodita")
-                    .slideUp("slow")
-                    .slideDown("fast")
+            $("#chica").click( function() {
+                $("img").attr({
+                    width: '160px',
+                    height: '196px'
+                });
             });
 
+            $("#mediana").click( function() {
+                $("img").attr({
+                    width: 320,
+                    height: 392
+                });
+            });
+
+            $("#grande").click( function() {
+                $("img").attr({
+                    width: 480,
+                    height: 588
+                });
+            });
+       
         });
 
     </script>
@@ -117,23 +123,27 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 04 - Efectos Animate Chain. </h1>
+        <h1> Seccion 5 - Modificar Atributos con el Método attr(). </h1>
         <hr>
     </header>
 
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <p> Nacimiento de Afrodita, por Sandro Botticelli (1445-1510) </p>
-        <p> Autor italiano del renacimiento </p>
-
-        <div id="afrodita"> </div>
-
         <div class="botones">
-            <input type="button" id="anima" value="Anima titulo" />
-            <input type="button" id="cuadro" value="Anima cuadro" />
+            <input id="titulo" type="button" value="Titulo">
+            <input id="chica" type="button" value="Chica">
+            <input id="mediana" type="button" value="Mediana">
+            <input id="grande" type="button" value="Grande">
         </div>
 
+        <br>
+        
+        <img src="imagenes/afrodita160x196.jpg" width="160" height="196" alt="Afrodita"
+            title="El nacimiento de Venus, William-Adolphe Bouguereau, 1879">
+        
+        <p id="texto"></p>
+        
     </main>
 
 </body>

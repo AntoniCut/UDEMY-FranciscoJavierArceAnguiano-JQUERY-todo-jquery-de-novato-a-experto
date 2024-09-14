@@ -1,6 +1,6 @@
-<!--  *****************************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion04-efectos/26-efectos-animate-chain/index.html  **********  -->
-<!--  *****************************************************************************************************************************************  -->
+<!--  ******************************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion05-jquery-html/31-jquery-val-escribe/index.html  **********  -->
+<!--  ******************************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> jQuery Efectos Animate Chain - Todo jQuery de Novato a Experto - Udemy - Francisco
+    <title> Seccion 5 - jQuery y HTML - Todo jQuery de Novato a Experto - Udemy - Francisco
         Javier Arce Anguiano
     </title>
 
@@ -52,7 +52,7 @@
         }
 
         p {
-            background-color: #CCC;
+            font-size: 24px;
             text-align: center;
         }
 
@@ -62,7 +62,12 @@
             gap: 20px;
         }
 
-        input {
+        .input {
+            width: 200px;
+            height: 20px;
+        }
+
+        button {
             width: 180px;
             margin: 0 auto;
             background-color: blueviolet;
@@ -84,25 +89,22 @@
             console.log("\n");
 
             //  -----  Referencia al HTML  -----
-            const $cuadrado = $("#cuadrado");
+            $inputNombre = $("#nombre");
+            $inputApellido = $("#apellidos");
 
-
-            $("#anima").click(function () {
-
-                $("p")
-                    .css("color", "red")
-                    .slideUp("slow")
-                    .slideDown("fast", function() {
-                        $(this).css("color", "black");
-                    })
+            $("#normal").click(function () {
+                $inputNombre.val('Antonio Francisco');
+                $inputApellido.val('Cutillas Garcia');
             });
 
+            $("#secreto").click(function () {
+                $inputNombre.val('James');
+                $inputApellido.val('Bond');
+            });
 
-            $("#cuadro").click(function () {
-
-                $("#afrodita")
-                    .slideUp("slow")
-                    .slideDown("fast")
+            $("#artistico").click(function () {
+                $inputNombre.val('Antony');
+                $inputApellido.val('Cut'); 
             });
 
         });
@@ -117,21 +119,21 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 04 - Efectos Animate Chain. </h1>
+        <h1> Seccion 5 - Escribe en una Caja de Texto con Val(). </h1>
         <hr>
     </header>
 
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <p> Nacimiento de Afrodita, por Sandro Botticelli (1445-1510) </p>
-        <p> Autor italiano del renacimiento </p>
 
-        <div id="afrodita"> </div>
-
+        <input type="text" id="nombre">
+        <input type="text" id="apellidos">
+        <br>
         <div class="botones">
-            <input type="button" id="anima" value="Anima titulo" />
-            <input type="button" id="cuadro" value="Anima cuadro" />
+            <button type="button" id="normal"> Nombre Normal </button>
+            <button type="button" id="secreto"> Nombre Secreto </button>
+            <button type="button" id="artistico"> Nombre Artistico </button>
         </div>
 
     </main>

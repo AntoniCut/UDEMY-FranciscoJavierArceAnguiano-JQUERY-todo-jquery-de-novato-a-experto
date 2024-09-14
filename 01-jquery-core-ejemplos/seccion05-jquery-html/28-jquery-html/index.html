@@ -1,6 +1,6 @@
-<!--  *****************************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion04-efectos/26-efectos-animate-chain/index.html  **********  -->
-<!--  *****************************************************************************************************************************************  -->
+<!--  ***********************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion05-jquery-html/28-jquery-html/index.html  **********  -->
+<!--  ***********************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> jQuery Efectos Animate Chain - Todo jQuery de Novato a Experto - Udemy - Francisco
+    <title> Seccion 5 - jQuery y HTML - Todo jQuery de Novato a Experto - Udemy - Francisco
         Javier Arce Anguiano
     </title>
 
@@ -43,17 +43,10 @@
             font-size: 16px;
         }
 
-        #afrodita {
-            width: 800px;
-            height: 502px;
-            background-image: url(imagenes/afrodita.jpg);
-            background-repeat: no-repeat;
-            background-size: 100%;
-        }
-
         p {
-            background-color: #CCC;
+            font-size: 24px;
             text-align: center;
+            cursor: pointer;
         }
 
         .botones {
@@ -83,27 +76,10 @@
             console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
             console.log("\n");
 
-            //  -----  Referencia al HTML  -----
-            const $cuadrado = $("#cuadrado");
-
-
-            $("#anima").click(function () {
-
-                $("p")
-                    .css("color", "red")
-                    .slideUp("slow")
-                    .slideDown("fast", function() {
-                        $(this).css("color", "black");
-                    })
-            });
-
-
-            $("#cuadro").click(function () {
-
-                $("#afrodita")
-                    .slideUp("slow")
-                    .slideDown("fast")
-            });
+            $("p").click(function() {
+                const texto = $(this).html();   //  recogemos el html
+                $(this).text(texto);            //  añadimos al html.
+            })
 
         });
 
@@ -117,22 +93,16 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 04 - Efectos Animate Chain. </h1>
+        <h1> Seccion 5 - Leer y Escribir Código HTML. </h1>
         <hr>
     </header>
 
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <p> Nacimiento de Afrodita, por Sandro Botticelli (1445-1510) </p>
-        <p> Autor italiano del renacimiento </p>
-
-        <div id="afrodita"> </div>
-
-        <div class="botones">
-            <input type="button" id="anima" value="Anima titulo" />
-            <input type="button" id="cuadro" value="Anima cuadro" />
-        </div>
+        <p> <strong> Este </strong> es <em> un párrafo </em> </p>
+        <p> Este <input type="button" value="botoncito" /> no es otra cosa que código HTML </p>
+        <p> Esta imagen <img src="imagenes/medusa.png" /> también es código HTML </p>
 
     </main>
 
