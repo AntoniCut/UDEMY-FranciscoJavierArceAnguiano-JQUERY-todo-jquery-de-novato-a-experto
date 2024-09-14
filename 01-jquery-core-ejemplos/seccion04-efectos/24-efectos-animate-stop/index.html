@@ -1,6 +1,6 @@
-<!--  **********************************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion04-efectos/23-efectos-animate-pila-quoue/index.html  **********  -->
-<!--  **********************************************************************************************************************************************  -->
+<!--  ****************************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion04-efectos/24-efectos-animate-stop/index.html  **********  -->
+<!--  ****************************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> jQuery Efectos Animate Pila o Queue - Todo jQuery de Novato a Experto - Udemy - Francisco
+    <title> jQuery Efectos Animate Stop - Todo jQuery de Novato a Experto - Udemy - Francisco
         Javier Arce Anguiano
     </title>
 
@@ -82,8 +82,9 @@
             //  -----  Referencia al HTML  -----
             const $cuadrado = $("#cuadrado");
 
+
             $("#corre").click(function () {
-                
+
                 $cuadrado.animate({
                     height: 600,
                     opacity: .2
@@ -106,6 +107,40 @@
 
             });
 
+
+            //  -----  .stop( [clearQueue ] [, jumpToEnd ] )  -----
+
+            //  ----------  Detiene 1  ----------------------------------------
+            //  -----  Detiene animación y continua la pila en ese punto  -----
+            //  -----  No limpia la pila, no salta al final  ------------------
+            $("#detiene1").click(function () {
+                $cuadrado.stop(false, false);
+            });
+
+
+            //  ----------  Detiene 2  ------------------------------------
+            //  -----  Detiene la animacion y la pila de animaciones  -----
+            //  -----  Limpia la pila, no salta al final  -----------------
+            $("#detiene2").click(function () {
+                $cuadrado.stop(true, false);
+            });
+
+
+            //  ----------  Detiene 3  -----------------------------------------------------
+            //  -----  Detiene la animacion y la pila de animaciones y se va al final  -----
+            //  -----  Limpia la pila y se va al final  ------------------------------------
+            $("#detiene3").click(function () {
+                $cuadrado.stop(true, true);
+            });
+
+
+            //  ----------  Detiene 4  -----------------------------------------------------
+            //  -----  Detiene la animacion y la pila de animaciones y se va al final  -----
+            //  -----  No limpia la pila, salta al final  ----------------------------------
+            $("#detiene4").click(function () {
+                $cuadrado.stop(false, true);
+            });
+
         });
 
     </script>
@@ -118,7 +153,7 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 04 - Efectos Animate Pila o Queue. </h1>
+        <h1> Seccion 04 - Efectos Animate Stop. </h1>
         <hr>
     </header>
 
@@ -126,11 +161,16 @@
     <main class="main">
 
         <div class="botones">
-            <input type="button" id="corre" value="corre" />
+            <input type="button" id="corre" value="Animación" /> Inicio de la Animación
+            <input type="button" id="detiene1" value="Stop 1" /> Detiene animación y continua la pila en ese punto - No limpia la pila, no salta al final 
+            <input type="button" id="detiene2" value="Stop 2" /> Detiene la animacion y la pila de animaciones - Limpia la pila, no salta al final
+            <input type="button" id="detiene3" value="Stop 3" /> Detiene la animacion y la pila de animaciones y se va al final - Limpia la pila y se va al final
+            <input type="button" id="detiene4" value="Stop 4" /> Detiene la animacion y la pila de animaciones y se va al final - No limpia la pila, salta al final
+
         </div>
 
         <div id="cuadrado"> </div>
-        
+
     </main>
 
 </body>

@@ -1,6 +1,6 @@
-<!--  *****************************************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion04-efectos/22-efectos-animate-valores-relativos/index.html  **********  -->
-<!--  *****************************************************************************************************************************************************  -->
+<!--  ********************************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion04-efectos/25-efectos-animate-callback/index.html  **********  -->
+<!--  ********************************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title> jQuery Efectos Animate Valores Relativos - Todo jQuery de Novato a Experto - Udemy - Francisco
+    <title> jQuery Efectos Animate CallBack - Todo jQuery de Novato a Experto - Udemy - Francisco
         Javier Arce Anguiano
     </title>
 
@@ -43,10 +43,13 @@
             font-size: 16px;
         }
 
-        .mercurio-container {
+        #cuadrado {
             position: absolute;
             top: 200px;
             left: 50px;
+            height: 100px;
+            width: 100px;
+            background-color: orange;
         }
 
         .botones {
@@ -77,23 +80,43 @@
             console.log("\n");
 
             //  -----  Referencia al HTML  -----
-            const $mercurio = $(".mercurio-container");
+            const $cuadrado = $("#cuadrado");
+
 
             $("#corre").click(function () {
-                $mercurio.animate({
-                    height: "toggle",
-                    left: "+=50",
-                    opacity: "-=0.1"
-                }, 1000);
+
+                $cuadrado.animate({
+                    height: 600,
+                    opacity: .2
+                }, 4000, function () {
+                    alert('Termina Animación 1');
+                });
+
+
+                $cuadrado.animate({
+                    width: "90%",
+                    opacity: .8
+                }, 4000, function () {
+                    alert('Termina Animación 2');
+                });
+
+                $cuadrado.animate({
+                    height: 100,
+                    opacity: .5
+                }, 4000, function () {
+                    alert('Termina Animación 3');
+                });
+
+                $cuadrado.animate({
+                    width: 100,
+                    opacity: 1
+                }, 4000, finalAnimacion4);
+
             });
 
-            $("#regresa").click(function () {
-                $mercurio.animate({
-                    height: "toggle",
-                    left: "-=50",
-                    opacity: "+=0.1"
-                }, 1000);
-            });
+            function finalAnimacion4() {
+                alert('Termina Animación 4');
+            }
 
         });
 
@@ -107,7 +130,7 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 04 - Efectos Animate Valores Relativos. </h1>
+        <h1> Seccion 04 - Efectos Animate CallBack. </h1>
         <hr>
     </header>
 
@@ -115,14 +138,10 @@
     <main class="main">
 
         <div class="botones">
-            <input type="button" id="corre" value="corre" />
-            <input type="button" id="regresa" value="regresa" />
+            <input type="button" id="corre" value="Animación" /> 
         </div>
 
-        <div class="mercurio-container">
-            <img src="imagenes/mercurio.jpg" width="201" height="251" id="mercurio">
-        </div>
-        <br>
+        <div id="cuadrado"> </div>
 
     </main>
 
