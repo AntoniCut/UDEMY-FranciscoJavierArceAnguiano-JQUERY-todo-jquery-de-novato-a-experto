@@ -1,6 +1,6 @@
-<!--  *********************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion08-jquery-ajax/41-ajax-load/index.html  **********  -->
-<!--  *********************************************************************************************************************************  -->
+<!--  ***********************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion08-jquery-ajax/45-metodo-ajax/index.html  **********  -->
+<!--  ***********************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -31,11 +31,11 @@
 
         .main {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             flex-wrap: wrap;
             justify-content: center;
-            /* align-items: center; */
-            text-align: left;
+            align-items: center;
+            /* text-align: left; */
             margin-top: 20px;
             gap: 50px;
             font-size: 16px;
@@ -43,13 +43,15 @@
 
         .load {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: center;
         }
 
         .botones {
             display: flex;
             flex-direction: row;
             justify-content: center;
+            align-items: center;
             gap: 20px;
         }
 
@@ -77,13 +79,49 @@
 
             console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
 
-            $("#poema1").click(function () {
-                $(".poema1").load("poema1.txt");
+            $("#popular").click(function () {
+                leePoema(0);
             });
 
-            $("#poema2").click(function () {
-                $(".poema2").load("poema2.txt");
+            $("#clasico").click(function () {
+                leePoema(1);
             });
+
+            $("#romantico").click(function () {
+                leePoema(2);
+            });
+
+
+            function leePoema(tipo_poema) {
+
+                $.ajax({
+                    async: true,
+                    type: "POST",
+                    dataType: "html",
+                    contentType: "application/x-www-form-urlencoded",
+                    url: "poemaPOST.php",
+                    data: { poema: tipo_poema },
+                    beforeSend: inicioEnvio,
+                    success: llegadaEnvio,
+                    timeout: 4000,
+                    error: errorEnvio
+                });
+            }
+
+
+            function inicioEnvio() {
+                $(".poema").text("Cargando Informacion");
+            }
+
+
+            function llegadaEnvio(data) {
+                $(".poema").html(data);
+            }
+
+
+            function errorEnvio() {
+                $(".poema").text("Error cargando la infotrmación");
+            }
 
         });
 
@@ -96,7 +134,7 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 8 - Cargar Archivos de Texto con load(). </h1>
+        <h1> Seccion 8 - El Método ajax() de jQuery. </h1>
         <hr>
 
     </header>
@@ -104,15 +142,18 @@
     <!--  **********  Contenido  **********  -->
     <main class="main">
 
-        <div class="load">
-            <button id="poema1"> Poema 1 </button>
-            <div class="poema1"> </div>
+        <div class="botones">
+            <button id="popular">Poema popular</button>
+            <button id="clasico">Poema Clásico</button>
+            <button id="romantico">Poema Romántico</button>
         </div>
 
         <div class="load">
-            <button id="poema2"> Poema 2 </button>
-            <div class="poema2"> </div>
+
+            <div class="poema"> </div>
+
         </div>
+
 
     </main>
 

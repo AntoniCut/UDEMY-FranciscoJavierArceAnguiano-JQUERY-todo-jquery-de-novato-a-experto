@@ -1,6 +1,13 @@
 <?php
+
+//  *********************************************************************************************************************************** 
+//  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion08-jquery-ajax/43-ajax-get/poemaPOST.php  ********** 
+//  *********************************************************************************************************************************** 
+
+
 $poema = $_POST["poema"];
-if($poema==0){
+
+if ($poema == 0) {
 	print "<h2>POEMA POPULAR</h2>";
 	print "<p>EN EL AGUA CLARA</p>";
 	print "<p>QUE BROTA EN LA FUENTE</p>";
@@ -14,7 +21,7 @@ if($poema==0){
 	print "<p>PORQUE SI TE SALES</p>";
 	print "<p>TE VAS A MORIR!</p>";
 	print "<h3>Poema anonimo</p>";
-} else if($poema==1){
+} else if ($poema == 1) {
 	print "<h2>REDONDILLAS</h2>";
 	print "<p>HOMBRES NECIOS QUE ACUSAIS</p>";
 	print "<p>A LA MUJER, SIN RAZON</p>";
@@ -26,7 +33,7 @@ if($poema==0){
 	print "<p>POR QUE QUEREIS QUE OBREN BIEN</p>";
 	print "<p>SI LAS INSITAIS AL MAL?</p>";
 	print "<h3>SOR JUANA INES DE LA CRUZ</p>";
-} else if($poema==2){
+} else if ($poema == 2) {
 	print "<h2>NOCTURNO A ROSARIO</h2>";
 	print "<p>PUES BIEN, YO NECESITO</p>";
 	print "<p>DECIRTE QUE TE ADORO</p>";
@@ -39,4 +46,3 @@ if($poema==0){
 	print "<p>CON TODO EL CORAZON</p>";
 	print "<h3>MANUEL ACU&Ntilde;A</p>";
 }
-?>

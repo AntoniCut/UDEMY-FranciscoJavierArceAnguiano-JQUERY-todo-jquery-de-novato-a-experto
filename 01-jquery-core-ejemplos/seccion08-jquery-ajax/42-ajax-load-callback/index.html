@@ -1,6 +1,6 @@
-<!--  *********************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion08-jquery-ajax/41-ajax-load/index.html  **********  -->
-<!--  *********************************************************************************************************************************  -->
+<!--  ******************************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion08-jquery-ajax/42-ajax-load-callback/index.html  **********  -->
+<!--  ******************************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -78,12 +78,18 @@
             console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
 
             $("#poema1").click(function () {
-                $(".poema1").load("poema1.txt");
+                $(".poema1").load("poema1.txt", onCarga);
             });
 
             $("#poema2").click(function () {
-                $(".poema2").load("poema2.txt");
+                $(".poema2").load("poema2.txt", onCarga);
             });
+
+            function onCarga( respuesta, estatus, xhr) {
+
+                if(estatus == "success") alert("Carga Exitosa!!!");
+                else alert("Error en la Carga");
+            }
 
         });
 
@@ -96,7 +102,7 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 8 - Cargar Archivos de Texto con load(). </h1>
+        <h1> Seccion 8 - La Función de CallBack en la Carga de Texto con load(). </h1>
         <hr>
 
     </header>
@@ -105,12 +111,12 @@
     <main class="main">
 
         <div class="load">
-            <button id="poema1"> Poema 1 </button>
+            <button id="poema1">Poema 1</button>
             <div class="poema1"> </div>
         </div>
 
         <div class="load">
-            <button id="poema2"> Poema 2 </button>
+            <button id="poema2">Poema 2</button>
             <div class="poema2"> </div>
         </div>
 

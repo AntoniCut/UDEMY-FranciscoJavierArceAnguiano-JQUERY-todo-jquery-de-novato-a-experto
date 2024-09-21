@@ -1,6 +1,6 @@
-<!--  *********************************************************************************************************************************  -->
-<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion08-jquery-ajax/41-ajax-load/index.html  **********  -->
-<!--  *********************************************************************************************************************************  -->
+<!--  ********************************************************************************************************************************  -->
+<!--  **********  /01-todo-jquery-de-novato-a-experto/01-jquery-core-ejemplos/seccion08-jquery-ajax/43-ajax-get/index.html  **********  -->
+<!--  ********************************************************************************************************************************  -->
 
 
 <!DOCTYPE html>
@@ -77,12 +77,12 @@
 
             console.warn('----------  Documento Cargado!!!  ----- ', 'CDN Google - jQuery version:', $.fn.jquery, ' ----------', '\n');
 
-            $("#poema1").click(function () {
-                $(".poema1").load("poema1.txt");
-            });
+            $("button").click(function () {
 
-            $("#poema2").click(function () {
-                $(".poema2").load("poema2.txt");
+                $.get("poema.php", function (data, estatus) {
+
+                    $(".poema").html(data);
+                });
             });
 
         });
@@ -96,7 +96,7 @@
     <!--  **********  Header o Cabecera  **********  -->
     <header class="header">
 
-        <h1> Seccion 8 - Cargar Archivos de Texto con load(). </h1>
+        <h1> Seccion 8 - El Comando GET en jQuery. </h1>
         <hr>
 
     </header>
@@ -105,13 +105,8 @@
     <main class="main">
 
         <div class="load">
-            <button id="poema1"> Poema 1 </button>
-            <div class="poema1"> </div>
-        </div>
-
-        <div class="load">
-            <button id="poema2"> Poema 2 </button>
-            <div class="poema2"> </div>
+            <button> Lee archivo </button>
+            <div class="poema"> </div>
         </div>
 
     </main>
