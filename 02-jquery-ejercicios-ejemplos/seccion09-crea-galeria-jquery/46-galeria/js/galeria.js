@@ -58,7 +58,7 @@ $(document).ready(function () {
         clearTimeout(timer);
 
         fotoActual -= 2;
-        if (foto < 0) fotoActual = numFotos - 1;
+        if (fotoActual < 0) fotoActual = numFotos - 1;
 
         cargaFoto(10);
 
